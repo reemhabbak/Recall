@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Recall">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<title>Recall</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF1F5; --surface:#FFFFFF; --sunk:#E2E8EF; --ink:#18263A; --muted:#5A6778;
+  --line:#CDD6E0; --sun:#E9A21A; --sun-ink:#3A2A00; --sun-soft:#FBEBC8;
+  --done:#2E7D74; --done-soft:#D5EEEA; --warn:#B4442C;
+  --display:"Bricolage Grotesque", ui-rounded, "Avenir Next", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", -apple-system, "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161E; --surface:#1A232F; --sunk:#232E3C; --ink:#E7ECF2; --muted:#9AA7B6;
+    --line:#2F3B4A; --sun:#F2B33D; --sun-ink:#2A1E00; --sun-soft:#3A2F17;
+    --done:#5BBFB2; --done-soft:#17322F; --warn:#F08A72; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161E; --surface:#1A232F; --sunk:#232E3C; --ink:#E7ECF2; --muted:#9AA7B6;
+  --line:#2F3B4A; --sun:#F2B33D; --sun-ink:#2A1E00; --sun-soft:#3A2F17;
+  --done:#5BBFB2; --done-soft:#17322F; --warn:#F08A72; color-scheme: dark;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font-family:var(--body);font-size:17px;line-height:1.45;-webkit-text-size-adjust:100%;padding-bottom:96px}
+main{max-width:560px;margin:0 auto;padding:20px 18px 24px}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.01em;margin:0}
+h1{font-size:2rem;line-height:1.1}
+h2{font-size:1.3rem;margin-bottom:10px}
+h3{font-size:1.05rem}
+p{margin:0}
+.muted{color:var(--muted)}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.view{display:none}.view.on{display:block}
+.greet{margin:6px 0 22px}
+.greet p{margin-top:6px}
+
+/* Capture */
+.capture{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:16px;margin-bottom:26px}
+.mode{display:grid;grid-template-columns:1fr 1fr;background:var(--sunk);border-radius:12px;padding:4px;margin-bottom:12px}
+.mode button{border:0;background:transparent;padding:10px 6px;border-radius:9px;font-weight:700;min-height:44px}
+.mode button[aria-pressed="true"]{background:var(--surface);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.capture textarea{width:100%;min-height:84px;resize:vertical;border:0;background:transparent;font-size:1.2rem;padding:4px 2px;outline:none}
+.capture textarea::placeholder{color:var(--muted)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{border:0;border-radius:14px;padding:12px 18px;min-height:48px;font-weight:700;background:var(--ink);color:var(--bg)}
+.btn.sun{background:var(--sun);color:var(--sun-ink)}
+.btn.done{background:var(--done);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.small{min-height:40px;padding:8px 14px;font-size:.95rem;border-radius:11px}
+.btn.wide{flex:1}
+.capture .row{margin-top:10px}
+.hint{font-size:.9rem;color:var(--muted)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:14px;font-weight:700;max-width:90vw;z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1;pointer-events:auto}
+.toast button{margin-left:10px;background:transparent;border:0;color:var(--sun);font-weight:700;text-decoration:underline}
+
+/* Match panel */
+.match{margin-top:12px;border-top:1px dashed var(--line);padding-top:12px;display:none}
+.match.on{display:block}
+.match .opt{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 0}
+.match .opt+.opt{border-top:1px solid var(--line)}
+
+/* I have time */
+.time{background:var(--sun-soft);border-radius:22px;padding:18px 16px 16px;margin-bottom:26px}
+.time h2{margin-bottom:12px}
+.mins{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mins button{border:2px solid transparent;background:var(--surface);border-radius:16px;padding:14px 4px;min-height:64px;font-family:var(--display);font-size:1.35rem;font-weight:700;line-height:1}
+.mins button small{display:block;font-family:var(--body);font-size:.8rem;font-weight:400;color:var(--muted);margin-top:4px}
+.mins button[aria-pressed="true"]{border-color:var(--sun);background:var(--sun);color:var(--sun-ink)}
+.mins button[aria-pressed="true"] small{color:var(--sun-ink)}
+.recs{margin-top:14px;display:grid;gap:10px}
+.rec{background:var(--surface);border-radius:16px;padding:14px}
+.rec .why{font-size:.92rem;color:var(--muted);margin:4px 0 10px}
+.rec .next{font-size:.95rem;margin:-4px 0 10px}
+.rec .row{gap:8px}
+
+/* Task lists */
+.tabs{display:flex;gap:6px;overflow-x:auto;margin:4px -2px 14px;padding:2px}
+.tabs button{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:8px 14px;min-height:40px;white-space:nowrap;font-weight:700}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.list{display:grid;gap:8px}
+.task{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 14px;text-align:left;width:100%}
+.check{flex:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--muted);background:transparent;margin-top:1px;display:grid;place-items:center}
+.check.on{background:var(--done);border-color:var(--done);color:#fff}
+.task .body{flex:1;min-width:0}
+.task .name{font-weight:700;overflow-wrap:anywhere}
+.task.closed .name{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.5px}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tag{font-size:.8rem;background:var(--sunk);border-radius:8px;padding:2px 8px}
+.tag.due{background:var(--sun-soft)}
+.tag.over{background:var(--warn);color:#fff}
+.tag.un{background:var(--done-soft)}
+.empty{padding:22px 4px;color:var(--muted)}
+.sweep{background:var(--surface);border:1.5px dashed var(--line);border-radius:18px;padding:14px;margin-bottom:16px}
+.sweep .opt{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:8px 0}
+
+/* Progress */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px}
+.big{font-family:var(--display);font-size:2.6rem;font-weight:700;line-height:1}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.stats div{background:var(--sunk);border-radius:12px;padding:10px}
+.stats b{display:block;font-family:var(--display);font-size:1.5rem}
+.stats span{font-size:.85rem;color:var(--muted)}
+.card ul{margin:10px 0 0;padding-left:20px}
+.card li{margin:4px 0}
+.card ol{padding-left:22px;margin:10px 0}
+textarea.io{width:100%;min-height:120px;border:1px solid var(--line);border-radius:12px;background:var(--bg);padding:10px;font-size:.85rem;margin-top:10px}
+.status{display:flex;gap:8px;align-items:center;font-size:.92rem}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--muted);flex:none}
+.dot.ok{background:var(--done)}.dot.warn{background:var(--sun)}
+
+/* Nav */
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);z-index:20}
+nav .in{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+nav a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 0 12px;color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:700;min-height:56px}
+nav a svg{width:24px;height:24px}
+nav a[aria-current="page"]{color:var(--ink)}
+
+/* Sheet */
+.scrim{position:fixed;inset:0;background:rgba(10,15,22,.45);z-index:30;display:none}
+.scrim.on{display:block}
+.sheet{position:fixed;left:0;right:0;bottom:0;max-height:92vh;max-height:92dvh;overflow-y:auto;background:var(--surface);border-radius:22px 22px 0 0;z-index:31;padding:18px 18px calc(24px + env(safe-area-inset-bottom,0px));transform:translateY(105%);transition:transform .25s ease}
+.sheet.on{transform:none}
+.sheet .in{max-width:560px;margin:0 auto}
+.field{margin-top:16px}
+.field label,.field .lab{display:block;font-weight:700;margin-bottom:6px}
+.field input[type=text],.field input[type=date],.field textarea,.field select{width:100%;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);padding:10px 12px;min-height:46px}
+.field textarea{min-height:70px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{flex:1;min-width:44px;min-height:44px;border:1.5px solid var(--line);background:transparent;border-radius:11px;font-weight:700}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.seg button.sug{border-style:dashed;border-color:var(--sun)}
+.scale-note{font-size:.88rem;color:var(--muted);margin-top:5px;min-height:1.2em}
+.switch{display:flex;align-items:center;gap:10px;min-height:44px}
+.switch input{width:24px;height:24px}
+.sheet .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}
+.danger{color:var(--warn)}
+/* Daily routine */
+.rgroup{margin-bottom:20px}
+.rgroup h2{font-size:1.05rem;color:var(--muted);margin-bottom:8px}
+.rlist{display:grid;gap:8px}
+.ritem{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 14px;width:100%;text-align:left;min-height:58px;font-weight:700}
+.ritem .check{margin-top:0}
+.ritem.on{background:var(--done-soft);border-color:transparent}
+.ritem.on .rname{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.5px}
+.rin{flex:1 1 100%;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);padding:8px 10px;min-height:44px;font-weight:700}
+.rsel{flex:1;min-height:44px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);padding:6px 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chips button{border:1.5px dashed var(--line);background:transparent;border-radius:999px;padding:8px 12px;min-height:42px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+
+<!-- HOME -->
+<section class="view on" id="v-home" aria-labelledby="h-home">
+  <div class="greet">
+    <h1 id="h-home">Catch it now.<br>Do it when there’s time.</h1>
+  </div>
+
+  <div class="capture" id="capture">
+    <div class="mode" role="group" aria-label="Capture mode">
+      <button id="m-todo" aria-pressed="true">Remember this</button>
+      <button id="m-done" aria-pressed="false">I just did this</button>
+    </div>
+    <label for="cap-input" class="hint" id="cap-label">Tap the mic on your keyboard to speak.</label>
+    <textarea id="cap-input" placeholder="Call the pharmacy about refills…" enterkeyhint="done"></textarea>
+    <div class="row">
+      <button class="btn wide" id="cap-save">Save</button>
+      <button class="btn ghost" id="cap-paste" hidden>Paste</button>
+    </div>
+    <div class="match" id="match" aria-live="polite"></div>
+  </div>
+
+  <div class="time">
+    <h2>I have time</h2>
+    <div class="mins" role="group" aria-label="How much time do you have?">
+      <button data-min="5">5<small>min</small></button>
+      <button data-min="15">15<small>min</small></button>
+      <button data-min="30">30<small>min</small></button>
+      <button data-min="60">60+<small>min</small></button>
+    </div>
+    <div class="recs" id="recs" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- TASKS -->
+<section class="view" id="v-tasks" aria-labelledby="h-tasks">
+  <h1 id="h-tasks" style="margin-bottom:14px">Your tasks</h1>
+  <div id="sweep"></div>
+  <div class="tabs" role="group" aria-label="Task list">
+    <button data-tab="inbox" aria-pressed="true">Inbox</button>
+    <button data-tab="ready" aria-pressed="false">Priorities</button>
+    <button data-tab="closed" aria-pressed="false">Completed</button>
+  </div>
+  <div class="list" id="list"></div>
+</section>
+
+<!-- DAILY -->
+<section class="view" id="v-daily" aria-labelledby="h-daily">
+  <div class="row" style="justify-content:space-between;margin-bottom:6px"><h1 id="h-daily">Daily</h1><button class="btn small ghost" id="r-edit">Edit</button></div>
+  <p class="muted" id="r-count" style="margin-bottom:16px"></p>
+  <div id="routine"></div>
+</section>
+
+<!-- PROGRESS -->
+<section class="view" id="v-progress" aria-labelledby="h-progress">
+  <h1 id="h-progress" style="margin-bottom:14px">What you’ve done</h1>
+  <div class="card" id="today"></div>
+  <div class="card" id="week"></div>
+  <div class="card" id="recall"></div>
+  <div class="card">
+    <h2>Your data</h2>
+    <div class="status" id="store-status"><span class="dot"></span><span>Checking storage…</span></div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn small" id="exp">Export backup</button>
+      <button class="btn small ghost" id="imp">Import backup</button>
+      <input type="file" id="imp-file" accept="application/json,.json" hidden>
+    </div>
+    <div id="io"></div>
+  </div>
+  <div class="card">
+    <h2>Capture with Siri</h2>
+    <p>Set this up once in the Shortcuts app:</p>
+    <ol>
+      <li>Add <b>Dictate Text</b>.</li>
+      <li>Add <b>Copy to Clipboard</b>.</li>
+      <li>Name it “Catch this.”</li>
+    </ol>
+    <p class="muted">Say “Hey Siri, catch this” and speak. Then open Recall, tap <b>Paste</b>, and <b>Save</b>. Or just tap the mic on your keyboard inside the app.</p>
+  </div>
+  <div class="card">
+    <h2>Appearance</h2>
+    <div class="seg" role="group" aria-label="Theme" id="theme">
+      <button data-th="auto">Auto</button><button data-th="light">Light</button><button data-th="dark">Dark</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<nav aria-label="Main">
+  <div class="in">
+    <a href="#home" data-v="home" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Now</a>
+    <a href="#daily" data-v="daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.3L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.3L4 15"/><path d="M4 20v-5h5"/></svg>Daily</a>
+    <a href="#tasks" data-v="tasks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6h.01M4 12h.01M4 18h.01"/></svg>Tasks</a>
+    <a href="#progress" data-v="progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13l5 5L20 7"/></svg>Done</a>
+  </div>
+</nav>
+
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-title"><div class="in" id="sheet-in"></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+window.addEventListener("error", e => {
+  const m = document.querySelector("main");
+  if(!m || document.getElementById("boot-err")) return;
+  const p = document.createElement("p");
+  p.id = "boot-err"; p.className = "card";
+  p.textContent = "Recall couldn’t start here: " + (e.message || "script error") + ". Open it from its web link in Safari instead.";
+  m.prepend(p);
+});
+(function(){
+"use strict";
+
+/* ---------- Constants ---------- */
+const LABELS = {
+  u:["No deadline","Someday soon","Soon","Time-sensitive","Critical"],
+  v:["Nice to have","Useful","Important","Very important","Essential"],
+  e:["Very hard","Difficult","Moderate","Easy","Very easy"]
+};
+const NAMES = {u:"Urgency",v:"Value",e:"Ease"};
+const DURS = [5,15,30,60];
+const CONTEXTS = ["Anywhere","Home","Work","Errands"];
+const STOP = new Set("a an the to for of on in at and or my me i with from about up out it this that is be get got just did do done have has had call called".split(" "));
+const LS_KEY = "recall.tasks.v1";
+const RKEY = "recall.routine.v1";
+const DEFAULT_ROUTINE = {items:[
+  {rid:"r1", name:"Take multivitamin", when:"morning"},
+  {rid:"r2", name:"Shower", when:"morning"},
+  {rid:"r3", name:"Floss", when:"evening"},
+  {rid:"r4", name:"Brush teeth", when:"evening"},
+  {rid:"r5", name:"Read a book", when:"anytime"}
+], log:{}};
+const WHEN = [["morning","Morning"],["evening","Evening"],["anytime","Anytime"],["reflect","End of day"]];
+const SUGGEST = [["Brush teeth","morning"],["Drink a glass of water","morning"],["Get outside in daylight","anytime"],["Move for 20 minutes","anytime"],["Stretch","anytime"],["Reach out to someone","anytime"],["Tidy up before bed","evening"],["Screens off before bed","evening"]];
+
+/* ---------- State ---------- */
+let tasks = new Map();
+let mode = "todo";
+let tab = "inbox";
+let window_ = null;
+let skipped = new Set();
+let storage = "local";
+let col = null;
+const writes = {};
+let routine = null, rEdit = false, rWhen = "morning", routinePushed = false;
+
+/* ---------- Helpers ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const newId = () => "t" + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+const now = () => Date.now();
+const isOpen = t => t.status !== "completed" && t.status !== "letgo";
+const isScored = t => t.duration || t.u || t.v || t.e;
+const dayStart = (d=new Date()) => { const x = new Date(d); x.setHours(0,0,0,0); return x.getTime(); };
+function daysUntil(due){
+  if(!due) return null;
+  const [y,m,d] = due.split("-").map(Number);
+  return Math.round((new Date(y,m-1,d).getTime() - dayStart())/86400000);
+}
+function dueText(n){
+  if(n === null) return "";
+  if(n < 0) return n === -1 ? "Overdue by a day" : `Overdue by ${-n} days`;
+  if(n === 0) return "Due today";
+  if(n === 1) return "Due tomorrow";
+  return `Due in ${n} days`;
+}
+
+/* Suggested scores: used only when you haven't set one yourself */
+function suggest(t){
+  const n = daysUntil(t.due);
+  const u = n === null ? 1 : n <= 1 ? 5 : n <= 3 ? 4 : n <= 7 ? 3 : 2;
+  const e = !t.duration ? 3 : t.duration <= 15 ? 4 : t.duration === 30 ? 3 : 2;
+  return {u, v:3, e};
+}
+const val = (t,k) => t[k] || suggest(t)[k];
+function priority(t){
+  let p = 0.35*val(t,"u") + 0.45*val(t,"v") + 0.20*val(t,"e");
+  const n = daysUntil(t.due);
+  if(n !== null && n <= 1) p += 3;          // hard deadlines override
+  return p;
+}
+
+/* ---------- Storage ---------- */
+function cacheLocal(){
+  try{ localStorage.setItem(LS_KEY, JSON.stringify([...tasks.values()])); }catch(e){}
+}
+function loadLocal(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(raw) JSON.parse(raw).forEach(t => t && t.id && tasks.set(t.id, t));
+  }catch(e){}
+}
+function clean(t){ const o = {}; for(const k in t){ if(t[k] !== undefined) o[k] = t[k]; } return o; }
+function persist(t){
+  t.updated = now();
+  tasks.set(t.id, t);
+  cacheLocal();
+  if(col){
+    const ref = col.doc(t.id), body = clean(t);
+    writes[t.id] = (writes[t.id] || Promise.resolve()).then(() => ref.set(body)).catch(onWriteError);
+  }
+  render();
+}
+function remove(id){
+  tasks.delete(id);
+  cacheLocal();
+  if(col){
+    const ref = col.doc(id);
+    writes[id] = (writes[id] || Promise.resolve()).then(() => ref.delete()).catch(onWriteError);
+  }
+  render();
+}
+function onWriteError(e){
+  if(e && e.code === "unavailable") return;
+  if(e && e.code === "quota_exceeded"){ toast("Storage is full. Export a backup and clear old tasks."); return; }
+  col = null; storage = "local"; renderStatus();
+}
+
+async function initCloud(){
+  if(!window.claude || !window.claude.use) { renderStatus(); return; }
+  try{
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    const uid = user ? await user.id() : null;
+    if(!db || !uid){ renderStatus(); return; }
+    col = db.collection("data/users/" + uid);
+    let first = true;
+    col.onSnapshot(snap => {
+      if(first && snap.empty && tasks.size && !snap.metadata.fromCache){
+        first = false;
+        storage = "cloud"; tasks.forEach(t => persist(t));   // move device-only tasks into your account
+        return;
+      }
+      if(!snap.metadata.fromCache) first = false;
+      const next = new Map();
+      snap.docs.forEach(d => {
+        const b = d.data();
+        if(d.id === "routine" && b){
+          if(Array.isArray(b.items)){
+            routine = {items:b.items.map(x => ({...x})), log:JSON.parse(JSON.stringify(b.log || {})), mig2:!!b.mig2, mig3:!!b.mig3};
+            try{ localStorage.setItem(RKEY, JSON.stringify(routine)); }catch(e){}
+            if(migrateRoutine()) saveRoutine();
+          }
+        } else if(b && b.id) next.set(b.id, {...b});
+      });
+      if(!snap.metadata.fromCache && !routinePushed && !snap.docs.some(d => d.id === "routine")){ routinePushed = true; saveRoutine(); }
+      if(!snap.empty || !first){ tasks = next; cacheLocal(); }
+      storage = "cloud";
+      render();
+    }, () => { col = null; storage = "local"; renderStatus(); });
+  }catch(e){ renderStatus(); }
+}
+
+/* ---------- Toast ---------- */
+let toastTimer;
+function toast(msg, undo){
+  const el = $("#toast");
+  el.innerHTML = esc(msg) + (undo ? ' <button type="button">Undo</button>' : "");
+  if(undo) el.querySelector("button").onclick = () => { undo(); el.classList.remove("on"); };
+  el.classList.add("on");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove("on"), undo ? 5000 : 2600);
+}
+
+/* ---------- Capture ---------- */
+function setMode(m){
+  mode = m;
+  $("#m-todo").setAttribute("aria-pressed", m === "todo");
+  $("#m-done").setAttribute("aria-pressed", m === "done");
+  $("#cap-input").placeholder = m === "todo" ? "Call the pharmacy about refills…" : "Ordered the groceries…";
+  $("#cap-save").textContent = m === "todo" ? "Save" : "Log it";
+  $("#cap-save").className = "btn wide" + (m === "done" ? " done" : "");
+  $("#match").classList.remove("on");
+}
+function tokens(s){
+  return new Set(s.toLowerCase().replace(/[^a-z0-9\s]/g," ").split(/\s+/)
+    .map(w => w.replace(/(ing|ed|es|s)$/,"")).filter(w => w.length > 1 && !STOP.has(w)));
+}
+function matches(text){
+  const a = tokens(text);
+  if(!a.size) return [];
+  return [...tasks.values()].filter(isOpen).map(t => {
+    const b = tokens(t.name); let hit = 0;
+    b.forEach(w => { if(a.has(w)) hit++; });
+    return {t, s: b.size ? hit / Math.min(a.size, b.size) : 0, hit};
+  }).filter(x => x.hit && x.s >= 0.5).sort((x,y) => y.s - x.s).slice(0,2);
+}
+function complete(t, note){
+  const prev = {...t};
+  persist({...t, status:"completed", completedAt: now()});
+  toast(note || "Marked done", () => persist(prev));
+}
+function logUnplanned(text){
+  const t = {id:newId(), name:text, status:"completed", created:now(), completedAt:now(), unplanned:true};
+  persist(t);
+  toast("Logged. Nice catch.", () => remove(t.id));
+}
+function save(){
+  const input = $("#cap-input");
+  const text = input.value.trim();
+  if(!text){ input.focus(); return; }
+  if(mode === "todo"){
+    const t = {id:newId(), name:text, status:"open", created:now()};
+    persist(t);
+    input.value = "";
+    toast("Saved to inbox", () => remove(t.id));
+    return;
+  }
+  const m = matches(text);
+  if(!m.length){ logUnplanned(text); input.value = ""; return; }
+  const box = $("#match");
+  box.innerHTML = `<h3>Is this one of your tasks?</h3>` + m.map(x =>
+    `<div class="opt"><span>${esc(x.t.name)}</span><button class="btn small done" data-match="${x.t.id}">Mark done</button></div>`
+  ).join("") + `<div class="row" style="margin-top:6px"><button class="btn small ghost" id="m-new">No, just log it</button></div>`;
+  box.classList.add("on");
+  box.querySelectorAll("[data-match]").forEach(b => b.onclick = () => {
+    complete(tasks.get(b.dataset.match), "Task completed");
+    input.value = ""; box.classList.remove("on");
+  });
+  $("#m-new").onclick = () => { logUnplanned(text); input.value = ""; box.classList.remove("on"); };
+}
+
+/* ---------- I have time ---------- */
+function reasons(t, mins){
+  const r = [];
+  const n = daysUntil(t.due);
+  if(n !== null && n <= 7) r.push(dueText(n));
+  if(val(t,"v") >= 4) r.push(LABELS.v[val(t,"v")-1].toLowerCase());
+  if(t.next) r.push("first step is clear");
+  if(val(t,"e") >= 4 && r.length < 2) r.push("quick win");
+  if(t.duration) r.push(`fits your ${mins === 60 ? "hour" : mins + " minutes"}`);
+  else r.push("no time estimate yet");
+  const s = r.slice(0,3).join(", ");
+  return s.charAt(0).toUpperCase() + s.slice(1) + ".";
+}
+function recommend(mins){
+  const open = [...tasks.values()].filter(t => isOpen(t) && !skipped.has(t.id));
+  const fit = open.filter(t => t.duration ? t.duration <= mins : mins >= 15);
+  const score = t => priority(t) + (t.next ? 0.3 : 0) + (t.duration ? 0 : -0.4);
+  return {picks: fit.sort((a,b) => score(b) - score(a)).slice(0,3), open};
+}
+function renderRecs(){
+  const box = $("#recs");
+  document.querySelectorAll(".mins button").forEach(b => b.setAttribute("aria-pressed", +b.dataset.min === window_));
+  if(!window_){ box.innerHTML = ""; return; }
+  const {picks, open} = recommend(window_);
+  if(!open.length){
+    box.innerHTML = `<p class="rec">Nothing waiting. That time is yours. Rest counts too.</p>`;
+    return;
+  }
+  if(!picks.length){
+    const big = open.sort((a,b) => priority(b) - priority(a))[0];
+    box.innerHTML = `<div class="rec"><h3>Nothing fits in ${window_} minutes</h3>
+      <p class="why">Try just the first step of “${esc(big.name)}”: ${big.next ? esc(big.next) : "decide what the first step is and write it down."}</p>
+      <div class="row"><button class="btn small" data-edit="${big.id}">Add a first step</button></div></div>`;
+    bindRecs(); return;
+  }
+  box.innerHTML = picks.map(t => `<div class="rec">
+    <h3>${esc(t.name)}</h3>
+    <p class="why">${esc(reasons(t, window_))}</p>
+    ${t.next ? `<p class="next"><b>Start with:</b> ${esc(t.next)}</p>` : ""}
+    <div class="row">
+      ${t.status === "progress"
+        ? `<button class="btn small done" data-done="${t.id}">Done</button>`
+        : `<button class="btn small sun" data-start="${t.id}">Start</button><button class="btn small done" data-done="${t.id}">Done</button>`}
+      <button class="btn small ghost" data-skip="${t.id}">Skip</button>
+    </div></div>`).join("");
+  bindRecs();
+}
+function bindRecs(){
+  const box = $("#recs");
+  box.querySelectorAll("[data-start]").forEach(b => b.onclick = () => { persist({...tasks.get(b.dataset.start), status:"progress"}); toast("Started. Go for it."); });
+  box.querySelectorAll("[data-done]").forEach(b => b.onclick = () => complete(tasks.get(b.dataset.done), "Done"));
+  box.querySelectorAll("[data-skip]").forEach(b => b.onclick = () => {
+    const t = tasks.get(b.dataset.skip);
+    skipped.add(t.id);
+    persist({...t, skips:(t.skips||0)+1});
+  });
+  box.querySelectorAll("[data-edit]").forEach(b => b.onclick = () => openSheet(b.dataset.edit));
+}
+
+/* ---------- Task list ---------- */
+function taskRow(t){
+  const closed = !isOpen(t);
+  const n = daysUntil(t.due);
+  const tags = [];
+  if(t.unplanned) tags.push(`<span class="tag un">Not on the list</span>`);
+  if(t.status === "letgo") tags.push(`<span class="tag">Let go</span>`);
+  if(t.status === "progress") tags.push(`<span class="tag due">In progress</span>`);
+  if(t.duration) tags.push(`<span class="tag">${t.duration === 60 ? "60+" : t.duration} min</span>`);
+  if(t.v) tags.push(`<span class="tag">${LABELS.v[t.v-1]}</span>`);
+  if(n !== null && !closed) tags.push(`<span class="tag ${n < 0 ? "over" : "due"}">${dueText(n)}</span>`);
+  if(t.recall) tags.push(`<span class="tag">Remembered late</span>`);
+  return `<div class="task ${closed ? "closed" : ""}">
+    <button class="check ${t.status === "completed" ? "on" : ""}" data-toggle="${t.id}" aria-label="${closed ? "Restore" : "Complete"} ${esc(t.name)}">${t.status === "completed" ? "✓" : ""}</button>
+    <button class="body" data-open="${t.id}" style="border:0;background:transparent;text-align:left;padding:0">
+      <div class="name">${esc(t.name)}</div>${tags.length ? `<div class="meta">${tags.join("")}</div>` : ""}
+    </button></div>`;
+}
+function renderList(){
+  document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.tab === tab));
+  const all = [...tasks.values()];
+  let items, empty;
+  if(tab === "inbox"){
+    items = all.filter(t => isOpen(t) && !isScored(t)).sort((a,b) => b.created - a.created);
+    empty = "Inbox is clear. Anything you capture lands here until you add a time or score.";
+  } else if(tab === "ready"){
+    items = all.filter(t => isOpen(t) && isScored(t)).sort((a,b) => priority(b) - priority(a));
+    empty = "Tap an inbox task to add a time estimate or scores, and it moves here.";
+  } else {
+    items = all.filter(t => !isOpen(t)).sort((a,b) => (b.completedAt||b.updated) - (a.completedAt||a.updated));
+    empty = "Finished and let-go tasks show up here.";
+  }
+  $("#list").innerHTML = items.length ? items.map(taskRow).join("") : `<p class="empty">${empty}</p>`;
+  $("#list").querySelectorAll("[data-toggle]").forEach(b => b.onclick = () => {
+    const t = tasks.get(b.dataset.toggle);
+    if(isOpen(t)) complete(t);
+    else { persist({...t, status:"open", completedAt:null}); toast("Restored"); }
+  });
+  $("#list").querySelectorAll("[data-open]").forEach(b => b.onclick = () => openSheet(b.dataset.open));
+  renderSweep();
+}
+function renderSweep(){
+  const stale = [...tasks.values()].filter(t => isOpen(t) &&
+    ((t.skips||0) >= 3 || (!isScored(t) && now() - t.created > 21*86400000))).slice(0,3);
+  const box = $("#sweep");
+  if(!stale.length){ box.innerHTML = ""; return; }
+  box.innerHTML = `<div class="sweep"><h3>Worth a second look</h3>
+    <p class="hint" style="margin:4px 0 6px">These keep getting passed over. Keeping or letting go are both fine.</p>
+    ${stale.map(t => `<div class="opt"><span>${esc(t.name)}</span><span class="row" style="flex-wrap:nowrap;gap:6px">
+      <button class="btn small ghost" data-keep="${t.id}">Keep</button>
+      <button class="btn small ghost" data-letgo="${t.id}">Let it go</button></span></div>`).join("")}</div>`;
+  box.querySelectorAll("[data-keep]").forEach(b => b.onclick = () => { const t = tasks.get(b.dataset.keep); persist({...t, skips:0, created:now()}); });
+  box.querySelectorAll("[data-letgo]").forEach(b => b.onclick = () => letGo(tasks.get(b.dataset.letgo)));
+}
+function letGo(t){
+  const prev = {...t};
+  persist({...t, status:"letgo", completedAt:now()});
+  toast("Let go. That’s a decision, not a failure.", () => persist(prev));
+}
+
+/* ---------- Edit sheet ---------- */
+let editing = null;
+function openSheet(id){
+  editing = {...tasks.get(id)};
+  if(!editing.id) return;
+  drawSheet();
+  $("#scrim").classList.add("on"); $("#sheet").classList.add("on");
+  setTimeout(() => $("#f-name") && $("#f-name").focus({preventScroll:true}), 260);
+}
+function closeSheet(){ $("#scrim").classList.remove("on"); $("#sheet").classList.remove("on"); editing = null; }
+function scaleField(k){
+  const sug = suggest(editing)[k], cur = editing[k];
+  const note = cur ? LABELS[k][cur-1] : `Suggested: ${LABELS[k][sug-1]}. Tap to set your own.`;
+  return `<div class="field"><span class="lab">${NAMES[k]}</span>
+    <div class="seg" role="group" aria-label="${NAMES[k]}">${[1,2,3,4,5].map(n =>
+      `<button type="button" data-k="${k}" data-n="${n}" aria-pressed="${cur === n}" class="${!cur && n === sug ? "sug" : ""}" aria-label="${n}, ${LABELS[k][n-1]}">${n}</button>`).join("")}</div>
+    <p class="scale-note">${esc(note)}</p></div>`;
+}
+function drawSheet(){
+  const t = editing, open = isOpen(t);
+  $("#sheet-in").innerHTML = `
+    <div class="row" style="justify-content:space-between"><h2 id="sh-title" style="margin:0">Edit task</h2>
+      <button class="btn small ghost" id="sh-close">Close</button></div>
+    <div class="field"><label for="f-name">Task</label><input type="text" id="f-name" value="${esc(t.name)}"></div>
+    <div class="field"><span class="lab">Time it takes</span><div class="seg" role="group" aria-label="Time it takes">
+      ${DURS.map(d => `<button type="button" data-dur="${d}" aria-pressed="${t.duration === d}">${d === 60 ? "60+" : d}</button>`).join("")}</div></div>
+    ${scaleField("u")}${scaleField("v")}${scaleField("e")}
+    <div class="field"><span class="lab">Need or want</span><div class="seg" role="group" aria-label="Need or want">
+      ${["need","want","both"].map(x => `<button type="button" data-nw="${x}" aria-pressed="${t.need === x}">${x[0].toUpperCase()+x.slice(1)}</button>`).join("")}</div></div>
+    <div class="field"><label for="f-due">Due date</label><input type="date" id="f-due" value="${esc(t.due||"")}"></div>
+    <div class="field"><label for="f-next">First step</label><input type="text" id="f-next" value="${esc(t.next||"")}" placeholder="Find the insurance card"></div>
+    <div class="field"><label for="f-ctx">Where</label><select id="f-ctx">${CONTEXTS.map(c => `<option ${t.context === c ? "selected" : ""}>${c}</option>`).join("")}</select></div>
+    <div class="field"><label for="f-notes">Notes</label><textarea id="f-notes">${esc(t.notes||"")}</textarea></div>
+    <div class="field"><label class="switch"><input type="checkbox" id="f-recall" ${t.recall ? "checked" : ""}> I remembered this too late</label></div>
+    <div class="actions">
+      <button class="btn" id="sh-save">Save</button>
+      ${open ? `<button class="btn done" id="sh-done">Mark done</button>` : `<button class="btn ghost" id="sh-restore">Restore</button>`}
+      ${open ? `<button class="btn ghost" id="sh-letgo">Let it go</button>` : `<span></span>`}
+      <button class="btn ghost danger" id="sh-del">Delete</button>
+    </div>`;
+  const s = $("#sheet-in");
+  const sync = () => {
+    editing.name = $("#f-name").value.trim() || editing.name;
+    editing.due = $("#f-due").value || null;
+    editing.next = $("#f-next").value.trim() || null;
+    editing.context = $("#f-ctx").value;
+    editing.notes = $("#f-notes").value.trim() || null;
+    editing.recall = $("#f-recall").checked;
+  };
+  s.querySelectorAll("[data-dur]").forEach(b => b.onclick = () => { sync(); editing.duration = editing.duration === +b.dataset.dur ? null : +b.dataset.dur; drawSheet(); });
+  s.querySelectorAll("[data-k]").forEach(b => b.onclick = () => { sync(); const k = b.dataset.k, n = +b.dataset.n; editing[k] = editing[k] === n ? null : n; drawSheet(); });
+  s.querySelectorAll("[data-nw]").forEach(b => b.onclick = () => { sync(); editing.need = editing.need === b.dataset.nw ? null : b.dataset.nw; drawSheet(); });
+  $("#f-due").onchange = () => { sync(); drawSheet(); };
+  $("#sh-close").onclick = closeSheet;
+  $("#sh-save").onclick = () => { sync(); persist(editing); closeSheet(); toast("Saved"); };
+  if($("#sh-done")) $("#sh-done").onclick = () => { sync(); const t2 = editing; closeSheet(); complete(t2); };
+  if($("#sh-restore")) $("#sh-restore").onclick = () => { sync(); persist({...editing, status:"open", completedAt:null}); closeSheet(); toast("Restored"); };
+  if($("#sh-letgo")) $("#sh-letgo").onclick = () => { sync(); const t2 = editing; closeSheet(); letGo(t2); };
+  $("#sh-del").onclick = () => { const t2 = tasks.get(editing.id); closeSheet(); remove(t2.id); toast("Deleted", () => persist(t2)); };
+}
+
+/* ---------- Daily routine ---------- */
+const dayKey = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+function loadRoutineLocal(){
+  try{ const r = localStorage.getItem(RKEY); routine = r ? JSON.parse(r) : null; }catch(e){ routine = null; }
+  if(!routine || !Array.isArray(routine.items)) routine = JSON.parse(JSON.stringify(DEFAULT_ROUTINE));
+  if(!routine.log) routine.log = {};
+  migrateRoutine();
+}
+function migrateRoutine(){
+  let changed = false;
+  if(!routine.mig2){
+    const have = new Set(routine.items.map(i => i.name.toLowerCase()));
+    [["Tidy up before bed","evening"],["Balanced breakfast","morning"],["No sugar today","reflect"]].forEach(([name, when], n) => {
+      if(!have.has(name.toLowerCase())) routine.items.push({rid:"rm2" + n, name, when});
+    });
+    routine.mig2 = true; changed = true;
+  }
+  if(!routine.mig3){
+    routine.items.forEach(i => { if(i.name === "Had a balanced breakfast" && i.when === "reflect"){ i.name = "Balanced breakfast"; i.when = "morning"; } });
+    routine.mig3 = true; changed = true;
+  }
+  return changed;
+}
+function saveRoutine(){
+  const keys = Object.keys(routine.log).sort();
+  while(keys.length > 60) delete routine.log[keys.shift()];
+  try{ localStorage.setItem(RKEY, JSON.stringify(routine)); }catch(e){}
+  if(col){
+    const ref = col.doc("routine"), body = {kind:"routine", items:routine.items, log:routine.log, mig2:!!routine.mig2, mig3:!!routine.mig3};
+    writes.routine = (writes.routine || Promise.resolve()).then(() => ref.set(body)).catch(onWriteError);
+  }
+  render();
+}
+function renderDaily(){
+  const done = new Set(routine.log[dayKey()] || []);
+  const items = routine.items, n = items.filter(i => done.has(i.rid)).length;
+  $("#r-edit").textContent = rEdit ? "Done editing" : "Edit";
+  $("#r-count").textContent = rEdit ? "Rename, move, or remove any habit. Changes save as you go." : !items.length ? "Add the small things you want to do every day."
+    : n === items.length ? `All ${n} done today.` : `${n} of ${items.length} done today. Starts fresh at midnight.`;
+  let html = WHEN.map(([w, label]) => {
+    const g = items.filter(i => i.when === w);
+    if(!g.length) return "";
+    return `<div class="rgroup"><h2>${label}</h2>${w === "reflect" ? `<p class="hint" style="margin:-4px 0 8px">Check these off before bed if today counted.</p>` : ""}<div class="rlist">${g.map(i => rEdit
+      ? `<div class="ritem" style="flex-wrap:wrap"><input type="text" class="rin" data-rname="${i.rid}" value="${esc(i.name)}" aria-label="Habit name"><select class="rsel" data-rmove="${i.rid}" aria-label="When">${WHEN.map(([w2,l2]) => `<option value="${w2}" ${i.when === w2 ? "selected" : ""}>${l2}</option>`).join("")}</select><button class="btn small ghost danger" data-rdel="${i.rid}">Remove</button></div>`
+      : `<button class="ritem ${done.has(i.rid) ? "on" : ""}" data-rid="${i.rid}" aria-pressed="${done.has(i.rid)}"><span class="check ${done.has(i.rid) ? "on" : ""}" aria-hidden="true">${done.has(i.rid) ? "✓" : ""}</span><span class="rname">${esc(i.name)}</span></button>`
+    ).join("")}</div></div>`;
+  }).join("");
+  if(rEdit){
+    const have = new Set(items.map(i => i.name.toLowerCase()));
+    const sug = SUGGEST.filter(([s]) => !have.has(s.toLowerCase()));
+    html += `<div class="card"><h2>Add a habit</h2>
+      <div class="field" style="margin-top:0"><label for="r-name">Habit</label><input type="text" id="r-name" placeholder="Make the bed"></div>
+      <div class="field"><span class="lab">When</span><div class="seg" role="group" aria-label="When">${WHEN.map(([w,l]) => `<button type="button" data-rwhen="${w}" aria-pressed="${rWhen === w}">${l}</button>`).join("")}</div></div>
+      <div class="row" style="margin-top:12px"><button class="btn" id="r-add">Add habit</button></div>
+      ${sug.length ? `<p class="hint" style="margin-top:16px">Ideas, tap to add:</p><div class="chips">${sug.map(([s,w]) => `<button type="button" data-rsug="${esc(s)}" data-w="${w}">${esc(s)}</button>`).join("")}</div>` : ""}</div>`;
+  }
+  const box = $("#routine");
+  box.innerHTML = html;
+  box.querySelectorAll("[data-rid]").forEach(b => b.onclick = () => {
+    const k = dayKey(), arr = routine.log[k] || [], id = b.dataset.rid;
+    routine.log[k] = arr.includes(id) ? arr.filter(x => x !== id) : [...arr, id];
+    saveRoutine();
+  });
+  box.querySelectorAll("[data-rname]").forEach(el => el.onchange = () => {
+    const item = routine.items.find(i => i.rid === el.dataset.rname), v = el.value.trim();
+    if(item && v && v !== item.name){ item.name = v; saveRoutine(); }
+  });
+  box.querySelectorAll("[data-rmove]").forEach(el => el.onchange = () => {
+    const item = routine.items.find(i => i.rid === el.dataset.rmove);
+    if(item){ item.when = el.value; saveRoutine(); toast(`Moved to ${WHEN.find(w => w[0] === el.value)[1]}`); }
+  });
+  box.querySelectorAll("[data-rdel]").forEach(b => b.onclick = () => {
+    const item = routine.items.find(i => i.rid === b.dataset.rdel), idx = routine.items.indexOf(item);
+    routine.items = routine.items.filter(i => i !== item);
+    saveRoutine();
+    toast(`Removed “${item.name}”`, () => { routine.items.splice(idx, 0, item); saveRoutine(); });
+  });
+  box.querySelectorAll("[data-rwhen]").forEach(b => b.onclick = () => {
+    const v = $("#r-name").value; rWhen = b.dataset.rwhen; renderDaily(); $("#r-name").value = v;
+  });
+  const addHabit = (name, when) => {
+    name = name.trim(); if(!name) return;
+    routine.items.push({rid:"r" + Date.now().toString(36) + Math.random().toString(36).slice(2,5), name, when});
+    saveRoutine(); toast(`Added “${name}”`);
+  };
+  if($("#r-add")){
+    $("#r-add").onclick = () => addHabit($("#r-name").value, rWhen);
+    $("#r-name").onkeydown = e => { if(e.key === "Enter"){ e.preventDefault(); addHabit($("#r-name").value, rWhen); } };
+  }
+  box.querySelectorAll("[data-rsug]").forEach(b => b.onclick = () => addHabit(b.dataset.rsug, b.dataset.w));
+}
+
+/* ---------- Progress ---------- */
+function renderProgress(){
+  const all = [...tasks.values()];
+  const today = dayStart(), week = today - 6*86400000;
+  const doneToday = all.filter(t => t.status === "completed" && t.completedAt >= today);
+  const unplanned = doneToday.filter(t => t.unplanned).length;
+  const letToday = all.filter(t => t.status === "letgo" && t.completedAt >= today).length;
+  let sentence;
+  if(!doneToday.length && !letToday) sentence = "Nothing logged yet today. Use “I just did this” to record things as you go; the small ones count.";
+  else {
+    sentence = `You handled ${doneToday.length} ${doneToday.length === 1 ? "thing" : "things"} today`;
+    sentence += unplanned ? `, and ${unplanned} ${unplanned === 1 ? "wasn’t" : "weren’t"} on your list.` : ".";
+    if(letToday) sentence += ` You also chose to let go of ${letToday}.`;
+  }
+  $("#today").innerHTML = `<h2>Today</h2><div class="big">${doneToday.length}</div><p style="margin-top:8px">${esc(sentence)}</p>
+    ${doneToday.length ? `<ul>${doneToday.slice(0,8).map(t => `<li>${esc(t.name)}</li>`).join("")}</ul>` : ""}
+    ${routine.items.length ? `<p class="muted" style="margin-top:10px">Daily routine: ${(routine.log[dayKey()] || []).filter(id => routine.items.some(i => i.rid === id)).length} of ${routine.items.length} done.</p>` : ""}`;
+  const cap = all.filter(t => t.created >= week && !t.unplanned).length;
+  const comp = all.filter(t => t.status === "completed" && t.completedAt >= week).length;
+  const lg = all.filter(t => t.status === "letgo" && t.completedAt >= week).length;
+  $("#week").innerHTML = `<h2>Last 7 days</h2><div class="stats">
+    <div><b>${cap}</b><span>Captured</span></div><div><b>${comp}</b><span>Handled</span></div><div><b>${lg}</b><span>Let go</span></div></div>`;
+  const late = all.filter(t => t.recall && (t.updated||t.created) >= week);
+  $("#recall").innerHTML = `<h2>Remembered too late</h2>${late.length
+    ? `<p>${late.length} this week. Look for a pattern: same place, same time of day, same kind of task?</p><ul>${late.map(t => `<li>${esc(t.name)}${t.context ? ` <span class="muted">(${esc(t.context)})</span>` : ""}</li>`).join("")}</ul>`
+    : `<p class="muted">None flagged this week. When a task resurfaces too late, open it and check “I remembered this too late.”</p>`}`;
+  renderStatus();
+}
+function renderStatus(){
+  const el = $("#store-status"); if(!el) return;
+  el.innerHTML = storage === "cloud"
+    ? `<span class="dot ok"></span><span>Saved to your Claude account, so clearing Safari won’t erase it.</span>`
+    : `<span class="dot warn"></span><span>Saved on this device only. Export a backup weekly.</span>`;
+}
+
+/* ---------- Export / import ---------- */
+async function exportData(){
+  const json = JSON.stringify({app:"recall", version:1, exported:new Date().toISOString(), tasks:[...tasks.values()]}, null, 2);
+  const name = `recall-backup-${new Date().toISOString().slice(0,10)}.json`;
+  try{
+    const dl = window.claude && window.claude.use ? await window.claude.use("downloads") : null;
+    if(dl){ await dl.save({filename:name, data:new Blob([json], {type:"application/json"})}); toast("Backup saved"); return; }
+  }catch(e){ if(e && e.code === "declined") return; }
+  if(!window.claude){
+    try{
+      const url = URL.createObjectURL(new Blob([json], {type:"application/json"}));
+      const a = document.createElement("a"); a.href = url; a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+      toast("Backup saved to Files");
+      return;
+    }catch(e){}
+  }
+  $("#io").innerHTML = `<p class="hint" style="margin-top:10px">Copy this and keep it somewhere safe, like Notes or Drive.</p><textarea class="io" readonly>${esc(json)}</textarea>`;
+  $("#io textarea").select();
+}
+function importJSON(text){
+  try{
+    const data = JSON.parse(text);
+    const list = Array.isArray(data) ? data : data.tasks;
+    if(!Array.isArray(list)) throw 0;
+    let n = 0;
+    list.forEach(t => { if(t && t.id && t.name && !tasks.has(t.id)){ persist(t); n++; } });
+    toast(n ? `Imported ${n} ${n === 1 ? "task" : "tasks"}` : "No new tasks in that backup");
+    $("#io").innerHTML = "";
+  }catch(e){ toast("That file isn’t a Recall backup. Check it’s the .json you exported."); }
+}
+
+/* ---------- Routing ---------- */
+const VIEWS = ["home","daily","tasks","progress"];
+function route(){
+  const h = location.hash.replace("#","");
+  const v = VIEWS.includes(h) ? h : "home";
+  VIEWS.forEach(x => $("#v-"+x).classList.toggle("on", x === v));
+  document.querySelectorAll("nav a").forEach(a => { if(a.dataset.v === v) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+  if(h === "capture" || h === "done"){
+    setMode(h === "done" ? "done" : "todo");
+    $("#cap-input").focus({preventScroll:true});
+  }
+  render();
+  window.scrollTo(0,0);
+}
+
+/* ---------- Render ---------- */
+function render(){
+  const v = $(".view.on");
+  if(!v) return;
+  if(v.id === "v-home") renderRecs();
+  if(v.id === "v-daily") renderDaily();
+  if(v.id === "v-tasks") renderList();
+  if(v.id === "v-progress") renderProgress();
+}
+
+/* ---------- Theme ---------- */
+function applyTheme(th){
+  if(th === "auto") document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme", th);
+  document.querySelectorAll("#theme button").forEach(b => b.setAttribute("aria-pressed", b.dataset.th === th));
+  try{ localStorage.setItem("recall.theme", th); }catch(e){}
+}
+
+/* ---------- Wire up ---------- */
+$("#m-todo").onclick = () => setMode("todo");
+$("#m-done").onclick = () => setMode("done");
+$("#cap-save").onclick = save;
+$("#r-edit").onclick = () => { rEdit = !rEdit; renderDaily(); };
+$("#cap-input").addEventListener("keydown", e => { if(e.key === "Enter" && !e.shiftKey){ e.preventDefault(); save(); } });
+$("#cap-paste").hidden = !(navigator.clipboard && navigator.clipboard.readText);
+$("#cap-paste").onclick = async () => {
+  try{ const t = await navigator.clipboard.readText(); if(t){ $("#cap-input").value = t.trim(); $("#cap-input").focus(); } else toast("Clipboard is empty"); }
+  catch(e){ toast("Long-press the text box and choose Paste instead."); }
+};
+document.querySelectorAll(".mins button").forEach(b => b.onclick = () => {
+  const m = +b.dataset.min;
+  window_ = window_ === m ? null : m; skipped = new Set(); renderRecs();
+});
+document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => { tab = b.dataset.tab; renderList(); });
+$("#scrim").onclick = closeSheet;
+document.addEventListener("keydown", e => { if(e.key === "Escape" && editing) closeSheet(); });
+$("#exp").onclick = exportData;
+$("#imp").onclick = () => {
+  $("#io").innerHTML = `<p class="hint" style="margin-top:10px">Choose a backup file, or paste its contents below.</p>
+    <div class="row" style="margin-top:8px"><button class="btn small ghost" id="imp-pick">Choose file</button><button class="btn small" id="imp-go">Import pasted text</button></div>
+    <textarea class="io" id="imp-text" placeholder="Paste backup here"></textarea>`;
+  $("#imp-pick").onclick = () => $("#imp-file").click();
+  $("#imp-go").onclick = () => importJSON($("#imp-text").value);
+};
+$("#imp-file").onchange = e => { const f = e.target.files[0]; if(f) f.text().then(importJSON); e.target.value = ""; };
+document.querySelectorAll("#theme button").forEach(b => b.onclick = () => applyTheme(b.dataset.th));
+
+let th = "auto"; try{ th = localStorage.getItem("recall.theme") || "auto"; }catch(e){}
+applyTheme(th);
+loadLocal();
+loadRoutineLocal();
+document.addEventListener("visibilitychange", () => { if(!document.hidden) render(); });
+window.addEventListener("hashchange", route);
+route();
+initCloud();
+})();
+</script>
+</body>
+</html>
